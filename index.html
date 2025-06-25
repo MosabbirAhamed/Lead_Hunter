@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lead Hunter</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="topbar">
+    <h2>Lead Hunter</h2>
+    <div class="theme-switcher">
+      <select id="themeSelect">
+        <option value="light">🌞 Light</option>
+        <option value="dark">🌙 Dark</option>
+        <option value="sepia">📜 Sepia</option>
+        <option value="cyberpunk">🧬 Cyberpunk</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="wrapper">
+
+    <div class="intro">
+  <h2>Hello! This is <span style="color: #007bff;">Lead Hunter</span></h2>
+  <p>Lead Hunter is a smart data scraping tool designed to help you collect and manage lead links quickly and efficiently. Simply paste your links or import a CSV/XLSX file to get started.</p>
+</div>
+    <form class="form">
+      <div class="input_wrapper">
+        <input type="text" class="todoInput" placeholder="Enter links separated by commas" />
+        <input type="text" class="categoryInput" placeholder="Category (optional)" />
+        <button class="btn" type="submit"><i class="fa-solid fa-plus"></i></button>
+      </div>
+    </form>
+
+    <div class="todos">
+      <ul id="sortableList"></ul>
+    </div>
+
+    <div class="link-counter">Total Links: <span id="linkCount">0</span></div>
+
+    <div class="actions">
+      <button class="delete-all">Delete All</button>
+      <div class="import-section">
+  <label class="import-label">Import CSV/XLSX:</label>
+  <input type="file" class="import-input" accept=".csv, .xlsx" />
+</div>
+    </div>
+  </div>
+
+  <div class="notification"></div>
+
+  <div id="confirmOverlay" class="confirm-overlay">
+    <div class="confirm-box">
+      <p id="confirmMessage">Are you sure?</p>
+      <div class="confirm-buttons">
+        <button id="confirmYesBtn" class="confirm-btn confirm-yes">Yes</button>
+        <button id="confirmNoBtn" class="confirm-btn confirm-no">No</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; <span id="year"></span> Mosabbir Ahamed. All rights reserved. | Made by
+    <a href="https://mosabbir-ahamed.netlify.app/" target="_blank">Mosabbir Ahamed</a>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="javascript.js"></script>
+</body>
+
+</html>

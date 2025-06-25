@@ -1,0 +1,412 @@
+/* Base Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+  padding-bottom: 60px;
+}
+
+/* Theme Variants */
+body.theme-dark {
+  background: #121212;
+  color: #eee;
+}
+
+body.theme-dark .wrapper,
+body.theme-dark .confirm-box {
+  background: #1e1e1e;
+}
+
+body.theme-sepia {
+  background: #f4ecd8;
+  color: #5b4636;
+}
+
+body.theme-cyberpunk {
+  background: #0f0f0f;
+  color: #0ff;
+}
+
+body.theme-cyberpunk .wrapper {
+  background: #1a1a1a;
+  border: 2px solid #0ff;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.theme-switcher select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Wrapper */
+.wrapper {
+  max-width: 700px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.category-tabs button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.category-tabs button.active,
+.category-tabs button:hover {
+  background: #0056b3;
+}
+
+.input_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.todoInput,
+.categoryInput {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+.btn {
+  padding: 0 16px;
+  font-size: 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+.search-bar {
+  margin-bottom: 10px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+.todos ul {
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.todos li {
+  background: #f9f9f9;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  flex-direction: column;
+  transition: background 0.3s;
+  position: relative;
+}
+
+.todos li:hover {
+  background: #e9ecef;
+}
+
+.link-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.todos a {
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.todos .note {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.todos .status {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-ok {
+  color: green;
+}
+
+.status-error {
+  color: red;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.icons i {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.link-counter {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.delete-all{
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #dc3545;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+      margin-top: 30px;
+}
+
+.import-input {
+  display: inline-block;
+}
+
+/* Notification */
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #007bff;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  font-weight: 600;
+  z-index: 9999;
+}
+
+.notification.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Confirm modal */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.confirm-overlay.active {
+  display: flex;
+}
+
+.confirm-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  max-width: 320px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #333;
+}
+
+.confirm-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.confirm-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.confirm-btn.confirm-yes {
+  background: #dc3545;
+  color: white;
+}
+
+.confirm-btn.confirm-no {
+  background: #ccc;
+  color: #333;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 14px;
+  color: #555;
+  margin-top: 40px;
+}
+
+.footer a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+body.theme-dark .footer {
+  color: #aaa;
+}
+
+
+
+/* Improve heading visibility in dark theme */
+body.theme-dark h1 {
+  color: #ffffff;
+}
+
+/* Improve delete button visibility in dark theme */
+body.theme-dark .fa-trash {
+  color: #ff6b6b;
+}
+
+body.theme-dark .fa-trash:hover {
+  color: #ff4c4c;
+}
+
+/* Style the import input section */
+.import-section {
+  
+  text-align: center;
+}
+
+.import-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+body.theme-dark .import-label {
+  color: #eee;
+}
+
+.import-input {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 14px;
+  width: 100%;
+  max-width: 300px;
+  cursor: pointer;
+  transition: border 0.3s ease;
+}
+
+.import-input:hover {
+  border-color: #007bff;
+}
+
+body.theme-dark .import-input {
+  background-color: #222;
+  color: #eee;
+  border-color: #444;
+}
+
+
+.intro {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.intro h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+body.theme-dark .intro h2 {
+  color: #f4f4f4;
+}
+
+.intro p {
+  font-size: 15px;
+  color: #666;
+  margin-top: 8px;
+}
+
+body.theme-dark .intro p {
+  color: #ccc;
+}
